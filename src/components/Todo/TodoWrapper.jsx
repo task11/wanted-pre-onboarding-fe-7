@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import AuthLogo from './AuthLogo';
+import TodoTitle from "./TodoTitle";
 
-export default function AuthWrapper({ children }) {
+export default function TodoWrapper({ children }) {
   return (
     <StyledPositioner>
-      <AuthLogo />
+      <TodoTitle />
       <StyledContents>
         {children}
       </StyledContents>
@@ -13,14 +13,19 @@ export default function AuthWrapper({ children }) {
   );
 };
 
+
 const StyledPositioner = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 70px;
+  gap: 50px;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledContents = styled.div`
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;

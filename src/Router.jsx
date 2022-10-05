@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import AuthRouter from './AuthRouter';
+
 import Auth from './Auth/Auth';
+import Todo from './Todo/Todo';
 
 export default function AppRouter() {
   return (
@@ -9,10 +12,9 @@ export default function AppRouter() {
         <Route
           path="/todo"
           element={
-            <div>todo</div>
-            // <AuthRouter>
-            //   <HomePage />
-            // </AuthRouter>
+            <AuthRouter>
+              <Todo />
+            </AuthRouter>
           }
         />
         <Route path="/" element={<Auth />} />
