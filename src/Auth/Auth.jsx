@@ -4,13 +4,10 @@ import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineAr
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+import { ACCESS_TYPE } from './AccessType';
+
 import AuthWrapper from '../components/Auth/AuthWrapper';
 import AuthForm from './AuthForm';
-
-const ACCESS_TYPE = {
-  'LOGIN': '로그인',
-  'REGISTER': '회원가입',
-};
 
 export default function Auth() {
   const navigate = useNavigate();
