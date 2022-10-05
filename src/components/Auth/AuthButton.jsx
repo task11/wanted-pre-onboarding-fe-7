@@ -1,34 +1,36 @@
 import styled from 'styled-components';
 
-export default function AuthButton({ children, onClick }) {
+export default function AuthButton({ children, onClick, ...rest }) {
   return (
-    <StyledWrapper onClick={onClick}>
+    <StyledWrapper onClick={onClick} {...rest}>
       {children}
     </StyledWrapper>
   );
 };
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.button`
     margin-top: 1rem;
     padding-top: 0.6rem;
     padding-bottom: 0.5rem;
-
+    border: none;
     background: ${props => props.theme.textColor};
     color: white;
-
     text-align: center;
     font-size: 1.25rem;
     font-weight: 500;
-
     cursor: pointer;
-    user-select: none;
     transition: .2s all;
 
     &:hover {
-        background: ${props => props.theme.accentColor}
+      background: ${props => props.theme.accentColor}
     }
 
     &:active {
       background: ${props => props.theme.accentColor}
+    }
+
+    &:disabled{
+      background-color: lightgray;
+      cursor: default;
     }
 `;
