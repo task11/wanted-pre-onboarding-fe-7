@@ -13,7 +13,7 @@ export default function Auth() {
   const { accessType, reversAceessType, changeAccessType } = useAccessTypeState();
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('accessToken')) {
       navigate('/todo');
     }
   }, [navigate]);
