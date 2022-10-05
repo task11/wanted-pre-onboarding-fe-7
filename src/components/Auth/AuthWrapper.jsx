@@ -4,16 +4,16 @@ import AuthLogo from './AuthLogo';
 
 export default function AuthWrapper({ children }) {
   return (
-    <StyledPosioner>
+    <StyledPositioner>
       <AuthLogo />
       <StyledContents>
         {children}
       </StyledContents>
-    </StyledPosioner>
+    </StyledPositioner>
   );
 };
 
-const StyledPosioner = styled.div`
+const StyledPositioner = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +22,5 @@ const StyledPosioner = styled.div`
 `;
 
 const StyledContents = styled.div`
-    padding: 2rem;
-    
+  padding: 2rem;
 `;

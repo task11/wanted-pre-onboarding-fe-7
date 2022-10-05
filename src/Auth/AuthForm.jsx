@@ -44,17 +44,23 @@ export default function AuthForm({ accessType }) {
     return true;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const { email, password } = userInfo;
 
-    axios.post(`/auth/${accessType === ACCESS_TYPE.LOGIN ? 'signin' : 'signup'}`, {
-      email,
-      password
-    }).then((res) => {
-      localStorage.setItem('accessToken', res.access_token);
-      alert('축하합니다! 회원가입이 완료되었습니다.');
+    try {
+      const result = await axios.post(
+        `/auth/${accessType === ACCESS_TYPE.LOGIN ? 'signin' : 'signup'}`,
+        {
+          email,
+          password
+        },
+      );
+
+      localStorage.setItem('accessToken', result.access_token);
       navigate('/todo');
-    });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
