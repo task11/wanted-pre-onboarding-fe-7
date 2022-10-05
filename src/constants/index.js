@@ -1,1 +1,2 @@
-export * from './AccessType';
+export * from './accessType';
+export * from './initialUserInfo';
