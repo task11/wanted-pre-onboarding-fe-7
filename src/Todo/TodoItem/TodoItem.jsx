@@ -1,16 +1,22 @@
-import styled from 'styled-components';
-
 import { useState } from 'react';
 
-import { useToggleState } from '../utils/hooks';
+import { useToggleState } from '../../utils/hooks';
 
-import TodoButton from "../components/Todo/TodoButton";
+import TodoButton from '../../components/Todo/TodoButton/TodoButton';
+
+import {
+  StyledButtonWrapper,
+  StyledInput,
+  StyledLi,
+  StyledTodo
+} from './TodoItem.style';
 
 export default function TodoItem(
   { todo,
     updateTodo,
     deleteTodo,
   }) {
+
   const { toggleState, handleToggleState } = useToggleState();
   const [newInputTodo, setNewInputTodo] = useState(todo.todo);
 
@@ -62,25 +68,3 @@ export default function TodoItem(
     </StyledLi >
   );
 };
-
-const StyledLi = styled.li`
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 300px;
-`;
-
-const StyledButtonWrapper = styled.div`
-  display: flex;
-  gap: 2px;
-`;
-
-const StyledTodo = styled.div`
-  width: 200px;
-  word-break:break-all;
-`;
-
-const StyledInput = styled.input`
-  
-`;

@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-
 import { useEffect, useState } from 'react';
 
 import { axios } from '../lib/axios';
 
-import TodoWrapper from '../components/Todo/TodoWrapper';
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
+import TodoWrapper from '../components/Todo/TodoWrapper/TodoWrapper';
+import TodoForm from './TodoForm/TodoForm';
+import TodoList from './TodoList/TodoList';
+
+import { StyledTodoForm } from './Todo.style';
 
 export default function Todo() {
   const [todos, setTodos] = useState([]);
@@ -101,12 +101,3 @@ export default function Todo() {
     </StyledTodoForm>
   );
 };
-
-const StyledTodoForm = styled.div`
-  display: flex;
-  background-color: white;
-  justify-content: center;
-  width: 600px;
-  height: 500px;
-  border-radius: 20px;
-`;

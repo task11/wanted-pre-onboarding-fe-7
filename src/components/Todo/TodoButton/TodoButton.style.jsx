@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
-export default function TodoButton({ children, onClick, ...rest }) {
-  return (
-    <StyledButton {...rest} onClick={onClick}>{children}</StyledButton>
-  );
-}
-
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   background-color: ${props => props.theme.textColor};
   color: white;
   border: none;

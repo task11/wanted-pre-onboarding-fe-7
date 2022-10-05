@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import TodoItem from '../TodoItem/TodoItem';
 
-import TodoItem from "./TodoItem";
+import { StyledUl } from './TodoList.style';
 
 export default function TodoList(
   { todos,
@@ -21,9 +21,3 @@ export default function TodoList(
     </StyledUl>
   );
 };
-
-const StyledUl = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
