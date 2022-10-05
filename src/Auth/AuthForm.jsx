@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { ACCESS_TYPE, initialUserInfo } from '../constants';
 
@@ -12,8 +13,10 @@ import {
 import AuthButton from '../components/Auth/AuthButton';
 import AuthContent from "../components/Auth/AuthContent";
 import InputWithLabel from "../components/Auth/InputWithLabel";
+import { axios } from '../lib/axios';
 
 export default function AuthForm({ accessType }) {
+  const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState(initialUserInfo);
 
   useEffect(() => {
@@ -42,7 +45,16 @@ export default function AuthForm({ accessType }) {
   };
 
   const handleSubmit = () => {
-    const { email, password, passwordCheck } = userInfo;
+    const { email, password } = userInfo;
+
+    axios.post(`/auth/${accessType === ACCESS_TYPE.LOGIN ? 'signin' : 'signup'}`, {
+      email,
+      password
+    }).then((res) => {
+      localStorage.setItem('accessToken', res.access_token);
+      alert('축하합니다! 회원가입이 완료되었습니다.');
+      navigate('/todo');
+    });
   };
 
   return (
