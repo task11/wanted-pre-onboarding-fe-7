@@ -40,7 +40,7 @@ $ npm start
 ``` 
 
 ---
-## 사용된 라이브러리
+## 라이브러리
 
 - `react(18.2.0)`
 - `react-router-dom - v6.4.1`
