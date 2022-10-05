@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ACCESS_TYPE } from "../../constants/AccessType";
+import { ACCESS_TYPE } from "../../constants";
 
 export const useAccessTypeState = () => {
   const [accessType, setAccessType] = useState(ACCESS_TYPE.LOGIN);
