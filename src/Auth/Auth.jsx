@@ -2,30 +2,21 @@ import styled from 'styled-components';
 import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight';
 
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
-import { ACCESS_TYPE } from './AccessType';
+import { useEffect } from 'react';
+import { useAccessTypeState } from '../utils/hooks';
 
 import AuthWrapper from '../components/Auth/AuthWrapper';
 import AuthForm from './AuthForm';
 
 export default function Auth() {
   const navigate = useNavigate();
-  const [accessType, setAccessType] = useState(ACCESS_TYPE.LOGIN);
+  const { accessType, reversAceessType, changeAccessType } = useAccessTypeState();
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
       navigate('/todo');
     }
   }, [navigate]);
-
-  const reversAceessType = (accessType) => {
-    return accessType === ACCESS_TYPE.REGISTER ? ACCESS_TYPE.LOGIN : ACCESS_TYPE.REGISTER;
-  };
-
-  const changeAccessType = (accessType) => {
-    setAccessType(reversAceessType(accessType));
-  };
 
   return (
     <StyledAuthForm>
