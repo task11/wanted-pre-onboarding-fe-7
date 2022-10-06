@@ -6,8 +6,6 @@ import {
   validationUserRegister
 } from '../../utils/functions';
 
-import { axios } from '../../lib/axios';
-
 import { ACCESS_TYPE, initialUserInfo } from '../../constants';
 
 import AuthButton from '../../components/Auth/AuthButton/AuthButton';
