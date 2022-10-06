@@ -1,19 +1,20 @@
-import styled from 'styled-components';
-
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { ACCESS_TYPE, initialUserInfo } from '../constants';
 
 import {
   validationUserLogin,
   validationUserRegister
-} from '../utils/functions';
+} from '../../utils/functions';
 
-import AuthButton from '../components/Auth/AuthButton';
-import AuthContent from "../components/Auth/AuthContent";
-import InputWithLabel from "../components/Auth/InputWithLabel";
-import { axios } from '../lib/axios';
+import { ACCESS_TYPE, initialUserInfo } from '../../constants';
+
+import { API_AUTH } from '../../api';
+
+import AuthButton from '../../components/Auth/AuthButton/AuthButton';
+import AuthContent from "../../components/Auth/AuthContent/AuthContent";
+import InputWithLabel from "../../components/Auth/InputWithLabel/InputWithLabel";
+
+import { StyledInputWrapper } from './AuthForm.style';
 
 export default function AuthForm({ accessType }) {
   const navigate = useNavigate();
@@ -48,13 +49,10 @@ export default function AuthForm({ accessType }) {
     const { email, password } = userInfo;
 
     try {
-      const result = await axios.post(
-        `/auth/${accessType === ACCESS_TYPE.LOGIN ? 'signin' : 'signup'}`,
-        {
-          email,
-          password
-        },
-      );
+      const result = await API_AUTH.userSign(accessType, {
+        email,
+        password
+      });
 
       localStorage.setItem('accessToken', result.access_token);
       navigate('/todo');
@@ -102,9 +100,3 @@ export default function AuthForm({ accessType }) {
     </AuthContent>
   );
 };
-
-const StyledInputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;

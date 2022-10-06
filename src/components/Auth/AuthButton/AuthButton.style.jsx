@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 
-export default function AuthButton({ children, onClick, ...rest }) {
-  return (
-    <StyledWrapper onClick={onClick} {...rest}>
-      {children}
-    </StyledWrapper>
-  );
-};
-
-const StyledWrapper = styled.button`
+export const StyledWrapper = styled.button`
     margin-top: 1rem;
     padding-top: 0.6rem;
     padding-bottom: 0.5rem;

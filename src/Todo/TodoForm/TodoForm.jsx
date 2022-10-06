@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import TodoButton from '../../components/Todo/TodoButton/TodoButton';
+import TodoInput from '../../components/Todo/TodoInput/TodoInput';
 
-import TodoButton from "../components/Todo/TodoButton";
-import TodoInput from "../components/Todo/TodoInput";
+import { StyledWrapper } from './TodoForm.style';
 
 export default function TodoForm({ inputTodo, handleChange, handleSubmitTodo }) {
   return (
@@ -17,11 +17,3 @@ export default function TodoForm({ inputTodo, handleChange, handleSubmitTodo }) 
     </StyledWrapper>
   );
 };
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  width: 100%;
-  justify-content: space-around;
-`;

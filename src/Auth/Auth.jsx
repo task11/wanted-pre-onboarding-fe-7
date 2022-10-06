@@ -1,12 +1,18 @@
-import styled from 'styled-components';
-import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight';
-
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { useAccessTypeState } from '../utils/hooks';
 
-import AuthWrapper from '../components/Auth/AuthWrapper';
-import AuthForm from './AuthForm';
+import AuthWrapper from '../components/Auth/AuthWrapper/AuthWrapper';
+import AuthForm from './AuthForm/AuthForm';
+
+import {
+  StyledAuthForm,
+  StyledButton,
+  StyledButtonWrapper
+} from './Auth.style';
+
+import { HiOutlineArrowNarrowRight } from '@react-icons/all-files/hi/HiOutlineArrowNarrowRight';
 
 export default function Auth() {
   const navigate = useNavigate();
@@ -32,33 +38,3 @@ export default function Auth() {
     </StyledAuthForm >
   );
 }
-
-const StyledAuthForm = styled.div`
-  position: relative;
-  display: flex;
-  background-color: white;
-  justify-content: center;
-  width: 500px;
-  height: 500px;
-  border-radius: 20px;
-`;
-
-const StyledButtonWrapper = styled.div`
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-`;
-
-const StyledButton = styled.button`
-  background-color: transparent;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${props => props.theme.accentColor};
-  font-size: 1.4rem;
-  cursor: pointer;
-  &:hover{
-    color: ${props => props.theme.textColor};
-  }
-`;
