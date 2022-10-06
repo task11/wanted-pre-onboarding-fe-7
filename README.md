@@ -51,3 +51,4 @@ $ npm start
 ---
 ## 배포 링크
 
+[https://task11.github.io/wanted-pre-onboarding-fe-7](https://task11.github.io/wanted-pre-onboarding-fe-7)
