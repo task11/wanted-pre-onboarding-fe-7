@@ -15,6 +15,7 @@ import AuthContent from "../../components/Auth/AuthContent/AuthContent";
 import InputWithLabel from "../../components/Auth/InputWithLabel/InputWithLabel";
 
 import { StyledInputWrapper } from './AuthForm.style';
+import { API_AUTH } from '../../api';
 
 export default function AuthForm({ accessType }) {
   const navigate = useNavigate();
@@ -49,13 +50,10 @@ export default function AuthForm({ accessType }) {
     const { email, password } = userInfo;
 
     try {
-      const result = await axios.post(
-        `/auth/${accessType === ACCESS_TYPE.LOGIN ? 'signin' : 'signup'}`,
-        {
-          email,
-          password
-        },
-      );
+      const result = await API_AUTH.userSign(accessType, {
+        email,
+        password
+      });
 
       localStorage.setItem('accessToken', result.access_token);
       navigate('/todo');
