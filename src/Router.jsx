@@ -7,7 +7,7 @@ import Todo from './Todo/Todo';
 
 export default function AppRouter() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route
           path="/todo"
