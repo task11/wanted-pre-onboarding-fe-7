@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { axios } from '../lib/axios';
-
 import TodoWrapper from '../components/Todo/TodoWrapper/TodoWrapper';
 import TodoForm from './TodoForm/TodoForm';
 import TodoList from './TodoList/TodoList';
 
 import { StyledTodoForm } from './Todo.style';
+
+import { API_TODO } from '../api';
 
 export default function Todo() {
   const [todos, setTodos] = useState([]);
@@ -18,7 +18,7 @@ export default function Todo() {
 
   const getTodos = async () => {
     try {
-      const result = await axios.get('/todos');
+      const result = await API_TODO.getTodos();
       setTodos(result);
     } catch (error) {
       console.error(error);
@@ -31,7 +31,7 @@ export default function Todo() {
 
   const handleSubmitTodo = async () => {
     try {
-      const result = await axios.post('/todos', {
+      const result = await API_TODO.submitTodo({
         todo: inputTodo,
       });
 
@@ -48,7 +48,7 @@ export default function Todo() {
 
   const updateTodo = async (todoId, newTodo, isCompleted) => {
     try {
-      const result = await axios.put(`/todos/${todoId}`, {
+      const result = await API_TODO.updateTodo(todoId, {
         todo: newTodo,
         isCompleted: isCompleted
       });
@@ -72,13 +72,11 @@ export default function Todo() {
         return;
       }
 
-      await axios.delete(`/todos/${todoId}`);
+      await API_TODO.deleteTodo(todoId);
 
       setTodos((currentState) => {
         return currentState.filter(({ id }) => id !== todoId);
       });
-
-      alert('삭제가 완료되었습니다.');
     } catch (error) {
       console.error(error);
     }

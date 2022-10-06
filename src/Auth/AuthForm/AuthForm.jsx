@@ -8,12 +8,13 @@ import {
 
 import { ACCESS_TYPE, initialUserInfo } from '../../constants';
 
+import { API_AUTH } from '../../api';
+
 import AuthButton from '../../components/Auth/AuthButton/AuthButton';
 import AuthContent from "../../components/Auth/AuthContent/AuthContent";
 import InputWithLabel from "../../components/Auth/InputWithLabel/InputWithLabel";
 
 import { StyledInputWrapper } from './AuthForm.style';
-import { API_AUTH } from '../../api';
 
 export default function AuthForm({ accessType }) {
   const navigate = useNavigate();
