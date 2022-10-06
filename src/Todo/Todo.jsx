@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import TodoWrapper from '../components/Todo/TodoWrapper/TodoWrapper';
 import TodoForm from './TodoForm/TodoForm';
 import TodoList from './TodoList/TodoList';
 
-import { StyledTodoForm } from './Todo.style';
+import { StyledLogout, StyledTodoForm } from './Todo.style';
+import { RiLogoutBoxRLine } from '@react-icons/all-files/ri/RiLogoutBoxRLine';
 
 import { API_TODO } from '../api';
 
 export default function Todo() {
+  const navigate = useNavigate();
   const [todos, setTodos] = useState([]);
   const [inputTodo, setInputTodo] = useState('');
 
@@ -82,9 +86,21 @@ export default function Todo() {
     }
   };
 
+  const onLogout = () => {
+    if (!window.confirm('로그아웃 하시겠습니까?')) {
+      return;
+    }
+
+    localStorage.removeItem('accessToken');
+    navigate('/');
+  };
+
   return (
     <StyledTodoForm>
       <TodoWrapper>
+        <StyledLogout onClick={onLogout}>
+          <RiLogoutBoxRLine />
+        </StyledLogout>
         <TodoForm
           inputTodo={inputTodo}
           handleChange={handleChange}
