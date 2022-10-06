@@ -7,6 +7,11 @@ Todo App
 ---
 ## 설치 및 실행
 
+환경 변수 설정(.env)
+1. API_URL
+2. PUBLIC_URL
+
+설치 및 실행
 ```bash
 $ npm install
 $ npm start
